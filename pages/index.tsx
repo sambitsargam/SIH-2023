@@ -10,6 +10,6 @@ const Home: NextPage = () => {
       <GettingStarted />
     </Container>
   );
-};
+}; 
 
 export default Home;

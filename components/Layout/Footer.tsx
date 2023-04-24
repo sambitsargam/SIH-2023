@@ -37,7 +37,7 @@ const Footer = () => {
           </Box>
           <Box>
             <VStack align="flex-start" gap="20px">
-              <Heading size="md">Company</Heading>
+              <Heading size="md">DeUniversity</Heading>
               <a href="#!">Our Team</a>
               <a href="#!">Partner With Us</a>
               <a href="#!">Privacy & Policy</a>
@@ -46,8 +46,8 @@ const Footer = () => {
           <Box>
             <VStack align="flex-start" gap="20px">
               <Heading size="md">Contact</Heading>
-              <a href="#!">+8801719058105</a>
-              <a href="mailto:contact@leveor.xyz">contact@leveor.xyz</a>
+              <a href="#!">+9190000000</a>
+              <a href="mailto:info@sambitsargam.in">info@sambitsargam.in</a>
             </VStack>
           </Box>
         </SimpleGrid>
@@ -59,7 +59,7 @@ const Footer = () => {
               <Icon as={IoLogoTwitter} />
             </HStack>
           </Box>
-          <Text fontSize="sm">Copyright {new Date().getFullYear()} Leveor</Text>
+          <Text fontSize="sm">Copyright {new Date().getFullYear()} Team BlockSprit</Text>
         </Flex>
       </Container>
     </Box>

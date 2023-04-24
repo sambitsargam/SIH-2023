@@ -8,3 +8,4 @@ export const SBT_CONTRACT_ABI = sbtABI;
 export const getSBTContract = (signer: JsonRpcSigner | undefined) => {
   return new Contract(SBT_CONTRACT_ADDRESS, SBT_CONTRACT_ABI, signer);
 };
+ 

@@ -19,6 +19,8 @@ import { Injected } from '../../config/connectors';
 import MobileDrawer from './MobileDrawer';
 import Logo from '../Logo/Logo';
 import MenuLink from '../MenuLink/MenuLink';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
