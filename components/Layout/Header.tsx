@@ -19,7 +19,7 @@ import { Injected } from '../../config/connectors';
 import MobileDrawer from './MobileDrawer';
 import Logo from '../Logo/Logo';
 import MenuLink from '../MenuLink/MenuLink';
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 
 const Header = () => {
@@ -32,7 +32,7 @@ const Header = () => {
   const router = useRouter();
 
   const connect = () => {
-    activate(Injected, (error) => {
+    activate(Injected, (error: { message: any; }) => {
       toast({
         title: 'Error!',
         description: error.message,
@@ -57,7 +57,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    Injected.isAuthorized().then((isAuthorized) => {
+    Injected.isAuthorized().then((isAuthorized: any) => {
       if (isAuthorized) {
         handleConnect();
       }
@@ -84,6 +84,7 @@ const Header = () => {
                 <Button variant="outline" onClick={active ? deactivate : handleConnect}>
                   {active ? 'Disconnect Wallet' : 'Connect Wallet'}
                 </Button>
+                <ConnectButton/>
               </HStack>
             )}
             {isMobile && (
