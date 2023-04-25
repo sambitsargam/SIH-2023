@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, useBoolean, useToast } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Textarea, useBoolean, useToast } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
@@ -98,7 +98,6 @@ const IssueNewCertificate = () => {
             register={register('username', { required: true })}
             error={errors?.username}
           />
-
           <TextareaInput
             label="Description"
             placeholder="Enter description"
@@ -117,7 +116,7 @@ const IssueNewCertificate = () => {
             register={register('tokenURI', { required: true })}
             error={errors?.tokenURI}
           />
-
+          <h2>Connect account is {account}</h2>
           <Flex justifyContent="end" justify="end" alignItems="center">
             <Button type="submit" isLoading={isLoading}>
               Issue Certificate

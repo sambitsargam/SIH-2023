@@ -31,8 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <title>DeUniversity</title>
         </Head>
         <Layout>
-              <Component {...pageProps} />
-            
+          <Component {...pageProps} />
         </Layout>
       </ChakraProvider>
     </Web3ReactProvider>
