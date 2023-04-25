@@ -8,20 +8,6 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 import NProgress from "nprogress";
-import "@rainbow-me/rainbowkit/styles.css";
-import {
-  darkTheme,
-  getDefaultWallets,
-  RainbowKitProvider,
-} from "@rainbow-me/rainbowkit";
-import {
-  chain,
-  configureChains,
-  createClient,
-  WagmiConfig,
-} from "wagmi";
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
 
 NProgress.configure({ showSpinner: false });
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -36,21 +22,6 @@ const getLibrary = (provider: any): Web3Provider => {
 
 import theme from "../theme";
 import Layout from "../components/Layout/Layout";
-const { chains, provider } = configureChains(
-  [chain.polygonMumbai],
-  [publicProvider()]
-);
-
-const { connectors } = getDefaultWallets({
-  appName: "DeUniversity",
-  chains,
-});
-
-const wagmiClient = createClient({
-  autoConnect: true,
-  connectors,
-  provider
-});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -60,11 +31,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <title>DeUniversity</title>
         </Head>
         <Layout>
-          <WagmiConfig client={wagmiClient}>
-            <RainbowKitProvider chains={chains} theme={darkTheme()}>
               <Component {...pageProps} />
-            </RainbowKitProvider>
-          </WagmiConfig>
+            
         </Layout>
       </ChakraProvider>
     </Web3ReactProvider>

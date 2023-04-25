@@ -53,8 +53,14 @@ const Header = () => {
           connect();
         })
         .catch((err: any) => console.log(err));
+        const accounts = await window.ethereum.request({
+          method: "eth_accounts",
+        });
+        console.log(accounts[0]);
     }
   };
+
+    
 
   useEffect(() => {
     Injected.isAuthorized().then((isAuthorized: any) => {
