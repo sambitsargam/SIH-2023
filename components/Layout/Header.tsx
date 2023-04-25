@@ -57,6 +57,13 @@ const Header = () => {
           method: "eth_accounts",
         });
         console.log(accounts[0]);
+        if (accounts[0]=="0x5e5791dd629fe1853d01ec0d5a3af7bc9673929e") {
+          window.alert("You are a Admin");
+        
+        }
+        else{
+          window.alert("You are a Student");
+        }
     }
   };
 
