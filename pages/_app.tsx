@@ -19,9 +19,6 @@ import {
   configureChains,
   createClient,
   WagmiConfig,
-  useEnsAvatar,
-  useEnsName,
-  useAccount,
 } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
@@ -40,7 +37,7 @@ const getLibrary = (provider: any): Web3Provider => {
 import theme from "../theme";
 import Layout from "../components/Layout/Layout";
 const { chains, provider } = configureChains(
-  [chain.polygonMumbai, chain.goerli],
+  [chain.polygonMumbai],
   [publicProvider()]
 );
 
@@ -52,7 +49,7 @@ const { connectors } = getDefaultWallets({
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
-  provider,
+  provider
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
