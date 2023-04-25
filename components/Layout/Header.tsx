@@ -84,7 +84,6 @@ const Header = () => {
                 <Button variant="outline" onClick={active ? deactivate : handleConnect}>
                   {active ? 'Disconnect Wallet' : 'Connect Wallet'}
                 </Button>
-                <ConnectButton/>
               </HStack>
             )}
             {isMobile && (
