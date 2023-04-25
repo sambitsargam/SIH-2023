@@ -99,17 +99,7 @@ const Header = () => {
             )}
           </Flex>
           <MobileDrawer onClose={onClose} isOpen={isOpen} />
-          <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
-      <ConnectButton />
-    </div>
+        
         </Box>
       </Container>
     </Box>
