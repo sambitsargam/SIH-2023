@@ -1,7 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { createContext, useEffect, useState } from 'react'
 import { ether, ethers } from 'ethers';
 import { contractAddress, contractABI } from '../utils/constants'
-import datas from './data.json'
 
 export const CertificateContext = createContext();
 
@@ -78,25 +78,51 @@ export const CertificateProvider = ({ children }) => {
   // Add New Certificate
   const addNewCertificate = async () => {
     try {
-      if (!ethereum) return alert("Please install Metamusk!!!");
+      if (!ethereum) return alert("Please install Metamask!!!");
       const { _candidate_name, _fathers_name, _academi, _course_name, _passing_year, _grade, _edited } = formData;
       const certificateContract = getEthereumContract();
+      // Save the certificate data to the Firebase Realtime Database
+     
       const certificateHash = await certificateContract.generateCertificate(_candidate_name, _fathers_name, _academi, _course_name, _passing_year, _grade, _edited);
-      setIsLoading(true)
+      setIsLoading(true);
+      const certificateData = {
+        candidate_name: _candidate_name,
+        fathers_name: _fathers_name,
+        academi: _academi,
+        course_name: _course_name,
+        passing_year: parseInt(_passing_year),
+        gred: _grade,
+        edited: _edited,
+        certId: certificateHash.hash
+      };
+      const response = await fetch('https://deuniversity-d31be-default-rtdb.firebaseio.com/certificate.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(certificateData)
+      });
+      if (response.ok) {
+        console.log('Certificate data saved .');
+      } else {
+        console.log('Failed to save the certificate data .');
+      }
       console.log(`Loading - ${certificateHash.hash}`);
       await certificateHash.wait();
-      setIsLoading(false)
+      setIsLoading(false);
       console.log(`Success - ${certificateHash.hash}`);
       const certificateCount = await certificateContract.getCertificateCount();
       setCertificateCount(certificateCount.toNumber());
-      alert("Sucessfull added certificate: " + certificateHash.hash);
-      getAllCertificates()
-      getEditedChain()
+      alert("Successfully added certificate: " + certificateHash.hash);
+      getAllCertificates();
+      getEditedChain();
+      
     } catch (err) {
       console.log(err);
       throw new Error("No ethereum object found");
     }
-  }
+  };
+  
 
   // Edit Certificate
   const editcertificate = async () => {
@@ -123,16 +149,24 @@ export const CertificateProvider = ({ children }) => {
   // Get all certificates
   const getAllCertificates = async () => {
     try {
-      if (!ethereum) return alert("Please install Metamusk!!!");
-      const certificateContract = getEthereumContract();
-     // const certificates = await certificateContract.getAllData();
-     const certificates = datas;
-      setAllCertificates(certificates);
+      if (!ethereum) return alert("Please install Metamask!!!");
+      
+      const response = await fetch('https://deuniversity-d31be-default-rtdb.firebaseio.com/certificate.json');
+      
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        const certificates = Object.values(data);
+        setAllCertificates(certificates);
+      } else {
+        console.log('Failed to fetch certificates from the Firebase Realtime Database.');
+      }
     } catch (err) {
       console.log(err);
       throw new Error("No ethereum object found");
     }
-  }
+  };
+  
 
   // Get Edit chain
   const getEditedChain = async () => {

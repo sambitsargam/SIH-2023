@@ -40,7 +40,9 @@ const Add = () => {
         <label htmlFor="" className='block text-white'>Obtained Grade:</label>
         <input className='md:w-[500px] w-[300px] p-4 rounded text-white '
           type="text" name='_grade' onChange={(e) => handelChange(e, e.target.name)} placeholder='Overall Grade Obtained By The Student' />
-
+        <label htmlFor="" className='block text-white'>Certificate Link:</label>
+        <input className='md:w-[500px] w-[300px] p-4 rounded text-white '
+          type="text" name='_certlink' onChange={(e) => handelChange(e, e.target.name)} placeholder='Add Cerificate Link' />
         {
           !isLoading ? (
             <div className="w-full flex items-center justify-center mt-10">

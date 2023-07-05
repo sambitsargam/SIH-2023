@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CertificateContext } from '../context/CertificateContext'
-import allCertificatesData from '../context/data.json';
 
 const Table = () => {
   const { getAllCertificates, allCertificates, filterEditedCertificates } = useContext(CertificateContext)
@@ -19,7 +18,7 @@ const Table = () => {
     setToggle(!toggle)
   }
 
-  const allCertificatess = Object.values(allCertificatesData);
+  const allCertificatess = Object.values(allCertificates);
 
 
   return (
