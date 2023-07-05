@@ -79,7 +79,7 @@ export const CertificateProvider = ({ children }) => {
   const addNewCertificate = async () => {
     try {
       if (!ethereum) return alert("Please install Metamask!!!");
-      const { _candidate_name, _fathers_name, _academi, _course_name, _passing_year, _grade, _edited } = formData;
+      const { _candidate_name, _fathers_name, _academi, _course_name, _passing_year, _grade, _edited, _certlink } = formData;
       const certificateContract = getEthereumContract();
       // Save the certificate data to the Firebase Realtime Database
      
@@ -93,7 +93,8 @@ export const CertificateProvider = ({ children }) => {
         passing_year: parseInt(_passing_year),
         gred: _grade,
         edited: _edited,
-        certId: certificateHash.hash
+        certId: certificateHash.hash,
+        certlink: _certlink
       };
       const response = await fetch('https://deuniversity-d31be-default-rtdb.firebaseio.com/certificate.json', {
         method: 'POST',
