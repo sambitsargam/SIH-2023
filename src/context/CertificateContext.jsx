@@ -82,8 +82,18 @@ export const CertificateProvider = ({ children }) => {
       const { _candidate_name, _fathers_name, _academi, _course_name, _passing_year, _grade, _edited, _certlink } = formData;
       const certificateContract = getEthereumContract();
       // Save the certificate data to the Firebase Realtime Database
-     
-      const certificateHash = await certificateContract.generateCertificate(_candidate_name, _fathers_name, _academi, _course_name, _passing_year, _grade, _edited);
+  
+      const gasLimit = 300000; // Set the gas limit as per your requirement
+      const certificateHash = await certificateContract.generateCertificate(
+        _candidate_name,
+        _fathers_name,
+        _academi,
+        _course_name,
+        _passing_year,
+        _grade,
+        _edited,
+        { gasLimit } // Use gasLimit instead of gas
+      );
       setIsLoading(true);
       const certificateData = {
         candidate_name: _candidate_name,
@@ -104,9 +114,9 @@ export const CertificateProvider = ({ children }) => {
         body: JSON.stringify(certificateData)
       });
       if (response.ok) {
-        console.log('Certificate data saved .');
+        console.log('Certificate data saved.');
       } else {
-        console.log('Failed to save the certificate data .');
+        console.log('Failed to save the certificate data.');
       }
       console.log(`Loading - ${certificateHash.hash}`);
       await certificateHash.wait();
@@ -117,12 +127,14 @@ export const CertificateProvider = ({ children }) => {
       alert("Successfully added certificate: " + certificateHash.hash);
       getAllCertificates();
       getEditedChain();
-      
+  
     } catch (err) {
       console.log(err);
-      throw new Error("No ethereum object found");
+      console.log("Error in adding certificate");
     }
   };
+  
+  
   
 
   // Edit Certificate
