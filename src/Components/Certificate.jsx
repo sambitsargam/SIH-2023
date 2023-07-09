@@ -13,7 +13,7 @@ const Certificate = ({ props }) => {
             <h1 className="text-5xl text-center font-bold m-2">Certificate</h1>
             <p className="mt-5 md:text-2xl text-xl p-5 text-justify leading-loose certificateBody">This is certify that <span className="font-bold underline">{certificate.candidate_name}</span> son/daughter of <span className="font-bold underline">{certificate.fathers_name}</span>  graduated from <span className="font-bold underline">{certificate.academi}</span> Degree in <span className="font-bold underline">{certificate.course_name}</span> in <span className="font-bold underline">{certificate.passing_year}</span> with the CGPA of <span className="font-bold underline">{certificate.gred}</span></p>
             <p className="mt-10">Certificate Id: {shortenAddress(certificate.certId)}</p>
-            <p className="mt-5">Certificate Link: <a href={certificate.certlink} target="_blank" rel="noreferrer" className="underline">{certificate.certlink}</a></p>
+            <p className="mt-5"> <img src={certificate.certlink} alt='certificate '/></p>
             {
               certificate.edited && (
                 <p className='text-[#e0420e]'>This certificate has been Corrected</p>
