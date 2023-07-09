@@ -122,15 +122,13 @@ export const CertificateProvider = ({ children }) => {
       await certificateHash.wait();
       setIsLoading(false);
       console.log(`Success - ${certificateHash.hash}`);
-      const certificateCount = await certificateContract.getCertificateCount();
-      setCertificateCount(certificateCount.toNumber());
       alert("Successfully added certificate: " + certificateHash.hash);
       getAllCertificates();
       getEditedChain();
   
     } catch (err) {
       console.log(err);
-      console.log("Error in adding certificate");
+      alert("Tranasaction is Pending due to Network Congestion. Please Chcek dashboard and Show the Transaction later.")
     }
   };
   
