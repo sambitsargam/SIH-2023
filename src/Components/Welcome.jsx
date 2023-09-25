@@ -35,7 +35,7 @@ const Welcome = () => {
           ) : (
             <>
               <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-                You are sucessfull <br /> Connected with DeUniversity
+                You are sucessfull <br /> Connected with CertiBlock
               </h1>
               <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
                 By: <span className='text-teal-300'>{currentAccount}</span>

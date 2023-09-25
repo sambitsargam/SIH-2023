@@ -23,7 +23,7 @@ const Navbar = () => {
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
         <Link to='/'>
-          <h1 className="text-white text-3xl md:text-5xl">DeUniversity</h1>
+          <h1 className="text-white text-3xl md:text-5xl">CertiBlock</h1>
         </Link>
         <p className="text-white hidden md:block lg:block">Fast and secure certificate authentication</p>
         <p className="text-white text-small md:hidden lg:hidden">Authenticate you Certificate</p>
